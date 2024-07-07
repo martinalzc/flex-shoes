@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    background-color: black;
+}
+
+nav {
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .logo img {
+    padding-top: 20px;
+    margin-left: 20px;
+    width: 110px;
+}
+
+.container .links {
+    display: flex;
+}
+
+.container .links a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    margin: 0 20px;
+    transition: 0.3s linear;
+}
+
+.links a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    background-color:#8a5afa ;
+    height: 3.5px;
+    transition: 0.3s linear;
+}
+
+.links a:hover::before, .links a:hover {
+    color: #8a5afa;
+    width: 100%;
+}
+
+
+/***************** Section Starts ****************/
+
+
+.hero {
+    width: 100%;
+    height: 90vh;
+    padding-top: 10vh; /* Añadido para evitar que el contenido se superponga con el nav */
+}
+
+.hero .content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content .main-content {
+    color: white;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.main-content h1 {
+    font-size: clamp(2rem, 1rem + 5vw, 4rem);
+}
+
+.main-content h2 {
+    color: #8a5afa;
+    font-size: clamp(2rem, 1rem + 5vw, 3.5rem);
+}
+
+.main-content p {
+    margin-top: 10px;
+    color: #797776;
+    font-size: 20px;
+}
+
+.main-content .order {
+    display: flex;
+    margin: 20px 0;
+    width: 100%;
+    min-height: 7vh;
+    margin-top: 30px;
+}
+
+.order button {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.order button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+.order button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+.order button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+
+.content .image img {
+    min-width: 350px;
+    width: 100%;
+    margin-right: 100px;
+    transform: rotate(40deg) translateX(900px);
+    filter: drop-shadow(-10px -10px 200px rgb(217, 176, 255) );
+} 
+
+
+/****************** MEDIA QUERIES NAV Y HERO *****************/
+
+
+@media (max-width: 800px) {
+    .content {
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .content .main-content {
+        margin: 0 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .order {
+        justify-content: center; /* Asegura que el contenido esté centrado */
+    }
+
+    .order button {
+        width: 100%; /* Asegura que el botón tome el ancho completo en móviles */
+        max-width: 300px; /* Opcional: Puedes limitar el ancho máximo del botón */
+    }
+
+    .container .links {
+        display: none; /* Oculta los enlaces por defecto en mobile */
+    }
+
+    .links a {
+        margin: 10px 0;
+    }
+
+    .content .image img {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 801px) {
+    .order {
+        justify-content: flex-start; /* Alinea el contenido al inicio (izquierda) */
+    }
+
+    .order button {
+        width: auto; /* El botón solo toma el ancho necesario en desktop */
+    }
+}
+
+@media (min-width: 884px) {
+    .content .image img {
+        min-width: 500px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 440px) {
+    .image img {
+        width: 100px;
+        margin-right: none;
+    }
+
+    .logo {
+        align-self: center;
+    }
+}
+
+@media (min-width: 1000px){
+    .content{
+        margin-left: 30px;
+    }
+}
+
+
+/*************** CONTACTO *******************/
+
+.contact-wrap{
+    margin-top: 8rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.contact-wrap a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    gap: 5px;
+}
+
+.contact-wrap a h3{
+    color: #8a5afa;
+}
+
+.contact-wrap a p{
+    color: #797776;
+}
+
+
+/************** MEDIA QUERIES CONTACTO ******************/
+
+
+
+
+
+
+/******************* CATALOGO ****************/
+
+
+.catalogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+    gap: 8px
+}
+
+.catalogo h2{
+    color: #8a5afa;
+    font-size: clamp(2rem, 1rem + 5vw, 3.5rem);;
+    margin: 8px 0 8px 0;
+
+}
+
+.catalogo h3{
+    color: white;
+    font-size: 40px;
+}
+
+.catalogo p{
+    color: #797776;
+    font-size: 20px;
+}
+
+
+.catalogo button {
+    margin-bottom: 5px;
+    --green: rgb(217, 176, 255);
+    font-size: 15px;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    position: relative;
+    font-family: inherit;
+    border-radius: 0.6em;
+    overflow: hidden;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--green);
+    background: linear-gradient(to right, rgb(100, 61, 136) 1%, transparent 40%,transparent 60% , rgb(100, 61, 136) 100%);
+    color: var(--green);
+    box-shadow: inset 0 0 10px rgba(191, 123, 255, 0.781), 0 0 9px 3px rgb(100, 61, 136);
+}
+
+
+/* CARDS */
+
+
+
+.catalogo-cards{
+        margin-top: 10rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(4, auto);
+        justify-content: space-around;
+        row-gap: 10rem;
+}
+
+
+.card {
+    position: relative;
+    width: 210px;
+    height: 290px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 220px;
+    height: 300px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #8a5afa 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #8a5afa 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+  }
+  
+  .heading {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+  
+  .card p:not(.heading) {
+    font-size: 14px;
+  }
+  
+  .card p:last-child {
+    color: #8a5afa;
+    font-weight: 600;
+  }
+  
+  .card:hover::after {
+    filter: blur(30px);
+  }
+  
+  .card:hover::before {
+    transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+  }
+  
+
+
+
+  /*********** CATALOGO MEDIA QUERIES **************/
+  
+
+
