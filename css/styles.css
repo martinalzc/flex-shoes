@@ -33,7 +33,7 @@ nav {
 .container .logo img {
     padding-top: 20px;
     margin-left: 20px;
-    width: 110px;
+    width: 80px;
 }
 
 .container .links {
@@ -102,6 +102,10 @@ nav {
     font-size: clamp(2rem, 1rem + 5vw, 3.5rem);
 }
 
+.main-content h3{
+    font-size: 17px;
+}
+
 .main-content p {
     margin-top: 10px;
     color: #797776;
@@ -116,7 +120,7 @@ nav {
     margin-top: 30px;
 }
 
-.order button {
+.order a {
     --glow-color: rgb(217, 176, 255);
     --glow-spread-color: rgba(191, 123, 255, 0.781);
     --enhanced-glow-color: rgb(231, 206, 255);
@@ -135,9 +139,10 @@ nav {
     text-shadow: 0 0 .5em var(--glow-color);
     position: relative;
     transition: all 0.3s;
+    text-decoration: none;
 }
 
-.order button::after {
+.order a::after {
     pointer-events: none;
     content: "";
     position: absolute;
@@ -151,7 +156,7 @@ nav {
     transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
 }
 
-.order button:hover {
+.order a:hover {
     color: var(--btn-color);
     background-color: var(--glow-color);
     box-shadow: 0 0 1em .25em var(--glow-color),
@@ -159,7 +164,7 @@ nav {
         inset 0 0 .75em .25em var(--glow-color);
 }
 
-.order button:active {
+.order a:active {
     box-shadow: 0 0 0.6em .25em var(--glow-color),
         0 0 2.5em 2em var(--glow-spread-color),
         inset 0 0 .5em .25em var(--glow-color);
@@ -194,7 +199,7 @@ nav {
         justify-content: center; /* Asegura que el contenido esté centrado */
     }
 
-    .order button {
+    .order a {
         width: 100%; /* Asegura que el botón tome el ancho completo en móviles */
         max-width: 300px; /* Opcional: Puedes limitar el ancho máximo del botón */
     }
@@ -218,7 +223,7 @@ nav {
         justify-content: flex-start; /* Alinea el contenido al inicio (izquierda) */
     }
 
-    .order button {
+    .order a {
         width: auto; /* El botón solo toma el ancho necesario en desktop */
     }
 }
@@ -253,10 +258,13 @@ nav {
 .contact-wrap{
     margin-top: 8rem;
     margin-bottom: 5rem;
-    display: flex;
-    flex-direction: row;
+    margin-top: 10rem;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
     justify-content: space-around;
+    row-gap: 10rem;
 }
 
 .contact-wrap a{
@@ -279,8 +287,23 @@ nav {
 
 /************** MEDIA QUERIES CONTACTO ******************/
 
+@media (max-width:800px){
+    .contact-wrap{
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: auto;
+        justify-content: space-around;
+        row-gap: 10rem;
+    }
+}
 
-
+@media (max-width:415px){
+    .contact-wrap{
+        grid-template-columns: repeat(1, auto);
+        grid-template-rows: auto;
+        justify-content: space-around;
+        row-gap: 10rem;
+    }
+}
 
 
 
@@ -332,97 +355,223 @@ nav {
 }
 
 
-/* CARDS */
-
-
+/*** CARDS ***/
 
 .catalogo-cards{
         margin-top: 10rem;
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(4, auto);
-        grid-template-rows: repeat(4, auto);
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(5, auto);
         justify-content: space-around;
         row-gap: 10rem;
 }
 
-
-.card {
+.card1 {
+    background-color: black;
+    width: 250px;
+    height: 300px;
     position: relative;
-    width: 210px;
-    height: 290px;
-    background-color: #000;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    padding: 12px;
-    gap: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 2px 2px 19px;
+}
+
+.card1::before {
+    content: "";
+    position: absolute;
+    z-index: -19;
+    width: 262px;
+    height: 312px;
+    margin: auto;
+    background: rgb(4,0,255);
+    background: linear-gradient(135deg, rgba(4,0,255,1) 0%, rgba(136,0,255,1) 35%, rgba(209,0,255,1) 100%);
+    border-radius: 6px;
+}
+
+.card1::after {
+    content: "";
+    position: absolute;
+    z-index: -19;
+    width: 262px;
+    height: 312px;
+    margin: auto;
+    background: rgb(4,0,255);
+    background: linear-gradient(135deg, rgba(4,0,255,1) 0%, rgba(136,0,255,1) 35%, rgba(209,0,255,1) 100%);
+    border-radius: 6px;
+    filter: blur(20px);
+    transition: 2s;
+}
+
+.card1:hover::after {
+    animation: cardafter 2.5s infinite forwards;
+}
+
+@keyframes cardafter {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
-
-
-
-
-
-
-
-
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    left: -5px;
-    margin: auto;
-    width: 220px;
-    height: 300px;
-    border-radius: 10px;
-    background: linear-gradient(-45deg, #8a5afa 0%, #40c9ff 100% );
-    z-index: -10;
-    pointer-events: none;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(-45deg, #8a5afa 0%, #00dbde 100% );
-    transform: translate3d(0, 0, 0) scale(0.95);
-    filter: blur(20px);
-  }
-  
-  .heading {
-    font-size: 20px;
-    text-transform: capitalize;
-    font-weight: 700;
-  }
-  
-  .card p:not(.heading) {
-    font-size: 14px;
-  }
-  
-  .card p:last-child {
-    color: #8a5afa;
-    font-weight: 600;
-  }
-  
-  .card:hover::after {
-    filter: blur(30px);
-  }
-  
-  .card:hover::before {
-    transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
-  }
-  
-
-
-
   /*********** CATALOGO MEDIA QUERIES **************/
-  
+
+@media (max-width:800px){
+    .catalogo-cards{
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, auto);
+        justify-content: space-around;
+        row-gap: 10rem;
+    }
+
+    .catalogo{
+        margin: 0 10px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width:415px){
+    .catalogo-cards{
+        grid-template-columns: repeat(1, auto);
+        grid-template-rows: auto;
+        justify-content: space-around;
+        row-gap: 10rem;
+    }
+
+    
+    .catalogo{
+        margin-top: 10rem;
+        gap: 8px
+    }
+
+    .catalogo h2{
+        font-size: 40px;
+        margin: 10px 0 15px 0;
+    }
+
+    .catalogo h3{
+        font-size: 30px;
+    }
+}
+
+
+/********************** FOOTER **************************/
+
+footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+footer .derechos{
+    margin-top: 2rem;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight:lighter;
+}
+
+footer .derechos:hover{
+    color:cyan;
+}
+
+footer .logo img{
+    width: 80px;
+    margin-left: 20px;
+}
+
+.icons-wrap{
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+}
+
+.button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(120deg, #833ab4, #fd1d1d, #fcb045);
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    transition: 0.1s;
+}
+
+.button svg {
+    color: white;
+    width: 30px;
+    height: 30px;
+    z-index: 9;
+}
+
+.button:nth-child(2) {
+    background: linear-gradient(120deg, #02ff2c, #008a12);
+    margin-left: 20px;
+}
+
+.button:active {
+    transform: scale(0.85);
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background-color: #131212;
+    border-radius: 50px;
+    z-index: -1;
+    border: 0px solid rgba(0, 0, 0, 0.747);
+    transition: 0.4s;
+}
+
+.button:hover::before {
+    width: 0px;
+    height: 0px;
+}
+
+/******************* FOOTER MEDIA QUERIES ************************/
+
+@media (max-width:415px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    
+    footer .derechos{
+        order: 3;
+        margin-bottom: 2rem;
+    }
+
+    footer .logo{
+        margin-bottom: 2rem;
+        margin-right: 5%;
+    }
+}
+
 
 
